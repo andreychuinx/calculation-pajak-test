@@ -1,3 +1,5 @@
+const { tax: { taxRelief } } = require('../configs')
+
 module.exports = {
   salary: (input) => {
     if (Number.isNaN(Number(input))) {
@@ -10,4 +12,15 @@ module.exports = {
       status: true,
     }
   },
+  relief: (input) => {
+    if (taxRelief[input] === undefined) {
+      return {
+        status: false,
+        message: 'Cannot found type of Relief'
+      }
+    }
+    return {
+      status: true
+    }
+  }
 }
